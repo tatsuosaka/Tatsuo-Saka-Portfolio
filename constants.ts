@@ -470,11 +470,11 @@ export const PROJECTS: Project[] = [
         id: "eles-elas-01",
         title: "Eles & Elas - Flyer",
         category: "Design",
-        thumbnail: "/images/design/eleseelas-01.png",
+        thumbnail: "/images/design/eleseelas-01.webp",
         thumbnailOrientation: "vertical",
         media: [
             {
-                url: "/images/design/eleseelas-01.png",
+                url: "/images/design/eleseelas-01.webp",
                 type: "image",
                 orientation: "vertical",
             },
