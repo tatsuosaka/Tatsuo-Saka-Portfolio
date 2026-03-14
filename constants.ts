@@ -637,6 +637,7 @@ export const PROJECTS: Project[] = [
         category: "Site",
         thumbnail: "/images/trinadorhp.webp",
         thumbnailOrientation: "horizontal",
+        url: "https://treinadorhp.vercel.app/",
         media: [
             {
                 url: "/images/trinadorhp.webp",
@@ -652,6 +653,7 @@ export const PROJECTS: Project[] = [
         category: "Site",
         thumbnail: "/images/publicar.webp",
         thumbnailOrientation: "horizontal",
+        url: "https://publicar-azure.vercel.app/",
         media: [
             {
                 url: "/images/publicar.webp",
@@ -661,26 +663,28 @@ export const PROJECTS: Project[] = [
         ],
         tools: ["Next.js", "Tailwind CSS", "Photoshop"],
     },
-    {
-        id: "charge-site",
-        title: "A Charge - Site",
-        category: "Site",
-        thumbnail: "/images/acharge.webp",
-        thumbnailOrientation: "horizontal",
-        media: [
-            {
-                url: "/images/acharge.webp",
-                type: "image",
-                orientation: "horizontal",
-            },
-        ],
-        tools: ["Wix", "Photoshop"],
-    },
+    // {
+    //     id: "charge-site",
+    //     title: "A Charge - Site",
+    //     category: "Site",
+    //     thumbnail: "/images/acharge.webp",
+    //     thumbnailOrientation: "horizontal",
+    //     url: "https://acharge.com.br",
+    //     media: [
+    //         {
+    //             url: "/images/acharge.webp",
+    //             type: "image",
+    //             orientation: "horizontal",
+    //         },
+    //     ],
+    //     tools: ["Wix", "Photoshop"],
+    // },
     {
         id: "carnivoros-mind-site",
         title: "Carnívoro's Mind - Site",
         category: "Site",
         thumbnail: "/images/carnivoros-mind.webp",
+        url: "https://www.carnivorosmind.com.br/",
         thumbnailOrientation: "horizontal",
         media: [
             {
@@ -696,6 +700,7 @@ export const PROJECTS: Project[] = [
         title: "Coding Invest - Site",
         category: "Site",
         thumbnail: "/images/codinginvest-institucional.webp",
+        url: "https://www.codinginvest.com.br/",
         thumbnailOrientation: "horizontal",
         media: [
             {
@@ -707,11 +712,12 @@ export const PROJECTS: Project[] = [
         tools: ["Angular", "CSS", "Photoshop"],
     },
     {
-        id: "coding-invest-site",
+        id: "coding-invest-blog",
         title: "Coding Invest - Blog",
         category: "Site",
         thumbnail: "/images/codinginvest-blog.webp",
         thumbnailOrientation: "horizontal",
+        url: "https://blog.codinginvest.com.br/",
         media: [
             {
                 url: "/images/codinginvest-blog.webp",
@@ -727,6 +733,7 @@ export const PROJECTS: Project[] = [
         category: "Site",
         thumbnail: "/images/hiragana.webp",
         thumbnailOrientation: "horizontal",
+        url: "https://tatsuosaka.github.io/hiragana/",
         media: [
             {
                 url: "/images/hiragana.webp",

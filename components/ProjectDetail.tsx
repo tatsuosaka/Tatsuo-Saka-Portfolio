@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { PROJECTS } from "../constants";
-import { ArrowLeft, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, CheckCircle2, ExternalLink } from "lucide-react";
 
 const ProjectDetail: React.FC = () => {
     const { id } = useParams<{ id: string }>();
@@ -76,6 +76,20 @@ const ProjectDetail: React.FC = () => {
                                 </li>
                             ))}
                         </ul>
+
+                        {project.category === "Site" && project.url && (
+                            <div className="mt-8 pt-8 border-t border-white/10">
+                                <a
+                                    href={project.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center justify-center w-full px-6 py-3 bg-brand text-black font-semibold rounded-full hover:bg-brand/90 transition-colors"
+                                >
+                                    <span>Acessar Site</span>
+                                    <ExternalLink size={18} className="ml-2" />
+                                </a>
+                            </div>
+                        )}
                     </div>
                 </div>
 

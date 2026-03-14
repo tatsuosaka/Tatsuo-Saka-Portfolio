@@ -11,6 +11,7 @@ export interface Project {
     thumbnail: string;
     thumbnailOrientation?: "horizontal" | "vertical";
     videoUrl?: string; // Placeholder for embedded video
+    url?: string; // URL for Site projects
     media: ProjectMedia[];
     tools: string[];
 }

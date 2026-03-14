@@ -16,8 +16,9 @@ interface WorkGridProps {
 // Componente para exibir cada projeto
 const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
     const [failedVideo, setFailedVideo] = useState(false);
+    const isImageFile = /\.(webp|png|jpg|jpeg|gif)$/i.test(project.thumbnail);
     const generatedThumbnail = useVideoThumbnail(
-        !failedVideo ? project.thumbnail : "",
+        !failedVideo && !isImageFile ? project.thumbnail : "",
     );
 
     return (
@@ -32,13 +33,9 @@ const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
                         : "aspect-video"
                 }`}
             >
-                {failedVideo ? (
+                {isImageFile || failedVideo ? (
                     <img
-                        src={
-                            project.posterImage ||
-                            generatedThumbnail ||
-                            "/images/placeholder.jpg"
-                        }
+                        src={project.thumbnail}
                         alt={project.title}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                     />
