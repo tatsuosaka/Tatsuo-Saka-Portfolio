@@ -3,7 +3,7 @@ import { Project } from "./types";
 export const PROJECTS: Project[] = [
     {
         id: "neon-dreams",
-        title: "Neon Dreams",
+        title: "Boteco Tijuca",
         category: "Vídeo",
         description: "Uma experiência cinematográfica cyberpunk.",
         client: "SynthWave Records",
