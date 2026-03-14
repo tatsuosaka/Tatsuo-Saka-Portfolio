@@ -37,7 +37,7 @@ const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
                     observer.unobserve(entry.target);
                 }
             },
-            { rootMargin: "50px" }
+            { rootMargin: "50px" },
         );
 
         if (containerRef.current) {
