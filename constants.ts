@@ -635,12 +635,12 @@ export const PROJECTS: Project[] = [
         id: "treinador-hp-site",
         title: "Treinador Pedro Henrique - Site",
         category: "Site",
-        thumbnail: "/images/trinadorhp.webp",
+        thumbnail: "/images/treinadorhp.webp",
         thumbnailOrientation: "horizontal",
         url: "https://treinadorhp.vercel.app/",
         media: [
             {
-                url: "/images/trinadorhp.webp",
+                url: "/images/treinadorhp.webp",
                 type: "image",
                 orientation: "horizontal",
             },
