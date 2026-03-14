@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { PROJECTS } from "../constants";
 import { PlayCircle, Globe, PenTool } from "lucide-react";
@@ -16,10 +16,36 @@ interface WorkGridProps {
 // Componente para exibir cada projeto
 const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
     const [failedVideo, setFailedVideo] = useState(false);
+    const [imageLoading, setImageLoading] = useState(true);
+    const [videoSrcLoaded, setVideoSrcLoaded] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+
     const isImageFile = /\.(webp|png|jpg|jpeg|gif)$/i.test(project.thumbnail);
     const generatedThumbnail = useVideoThumbnail(
         !failedVideo && !isImageFile ? project.thumbnail : "",
     );
+
+    // Lazy load vídeos quando entram na viewport
+    useEffect(() => {
+        if (isImageFile || failedVideo) return;
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setVideoSrcLoaded(true);
+                    observer.unobserve(entry.target);
+                }
+            },
+            { rootMargin: "50px" }
+        );
+
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, [isImageFile, failedVideo]);
 
     return (
         <Link
@@ -27,27 +53,38 @@ const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
             className="group block mb-6 md:mb-8 break-inside-avoid"
         >
             <div
+                ref={containerRef}
                 className={`relative rounded-2xl overflow-hidden bg-[#111] mb-4 ${
                     project.thumbnailOrientation === "vertical"
                         ? "aspect-[4/5]"
                         : "aspect-video"
                 }`}
             >
+                {/* Loading placeholder */}
+                {imageLoading && !generatedThumbnail && (
+                    <div className="absolute inset-0 bg-gradient-to-r from-gray-800 via-gray-700 to-gray-800 animate-pulse" />
+                )}
+
                 {isImageFile || failedVideo ? (
                     <img
                         src={project.thumbnail}
                         alt={project.title}
+                        loading="lazy"
+                        onLoad={() => setImageLoading(false)}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                     />
                 ) : (
                     <video
-                        src={project.thumbnail}
+                        ref={videoRef}
+                        src={videoSrcLoaded ? project.thumbnail : undefined}
                         poster={generatedThumbnail}
                         autoPlay
                         muted
                         loop
                         playsInline
+                        preload="none"
                         onError={() => setFailedVideo(true)}
+                        onLoadedData={() => setImageLoading(false)}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 opacity-90 group-hover:opacity-100"
                     />
                 )}

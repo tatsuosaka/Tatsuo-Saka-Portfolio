@@ -16,13 +16,15 @@ export const useVideoThumbnail = (videoUrl: string) => {
 
         const handleSeeked = () => {
             const canvas = document.createElement("canvas");
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
+            // Reduz resolução para melhor performance
+            canvas.width = Math.min(400, video.videoWidth / 2);
+            canvas.height = Math.min(600, video.videoHeight / 2);
 
             const ctx = canvas.getContext("2d");
             if (ctx) {
-                ctx.drawImage(video, 0, 0);
-                const dataUrl = canvas.toDataURL("image/jpeg", 0.8);
+                ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+                // Reduz qualidade de 0.8 para 0.6 para arquivo menor
+                const dataUrl = canvas.toDataURL("image/jpeg", 0.6);
                 setThumbnail(dataUrl);
             }
         };
