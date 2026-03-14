@@ -9,7 +9,7 @@ export const useVideoThumbnail = (videoUrl: string) => {
         const video = document.createElement("video");
         video.src = videoUrl;
         video.crossOrigin = "anonymous";
-        
+
         const handleLoadedMetadata = () => {
             video.currentTime = Math.min(1, video.duration * 0.1); // Pega frame em 10% do vídeo
         };

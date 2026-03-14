@@ -17,7 +17,7 @@ interface WorkGridProps {
 const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
     const [failedVideo, setFailedVideo] = useState(false);
     const generatedThumbnail = useVideoThumbnail(
-        !failedVideo ? project.thumbnail : ""
+        !failedVideo ? project.thumbnail : "",
     );
 
     return (
@@ -57,15 +57,9 @@ const ProjectCard: React.FC<{ project: any }> = ({ project }) => {
 
                 {/* Category Icon Overlay */}
                 <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md p-2 rounded-full text-white/80">
-                    {project.category === "Vídeo" && (
-                        <PlayCircle size={16} />
-                    )}
-                    {project.category === "Site" && (
-                        <Globe size={16} />
-                    )}
-                    {project.category === "Design" && (
-                        <PenTool size={16} />
-                    )}
+                    {project.category === "Vídeo" && <PlayCircle size={16} />}
+                    {project.category === "Site" && <Globe size={16} />}
+                    {project.category === "Design" && <PenTool size={16} />}
                 </div>
             </div>
 
